@@ -30,13 +30,7 @@ socket.on("created", function (room) {
 //this message is received only by the client that connected first
 //when the second peer is connected
 socket.on("join", function (room, client, socketid) {
-  console.log(
-    "Another peer made a request to join room " +
-      room +
-      " whith name :" +
-      client
-  );
-  console.log("This peer is the initiator of room " + room + "!");
+  console.log("Another peer made a request to join room ", room, " whith name :", client);
   sendmessagebutton.disabled = false;
   //if the client is the creator send to the client that just connected the array of the other users names
   if (isInitiator) {
@@ -54,7 +48,6 @@ socket.on("join", function (room, client, socketid) {
 //as he has all the names of every next client joins the room
 socket.on("beforeyou", (previous) => {
   remoteclients = previous;
-  console.log(previous);
   document.getElementById("remotename").innerHTML = remoteclients;
   sendmessagebutton.disabled = false;
 });
